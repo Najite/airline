@@ -1,0 +1,65 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Document</title>
+    
+</head>
+<body>
+    <header>
+        <nav class="top">
+            <p>Airline Tracker</p>
+
+            <ul>
+                <li>SignUp</li>
+                <li>Login</li>
+            </ul>
+        </div>
+    </header>
+    <section class="banner">
+        
+        <video autoplay loop muted src="{% static 'video/Pexels Videos 1903279.mp4' %}"></video>
+    
+        <div class="banner-text">
+                <h2> Stay Updated with Latest Airline <br> Information of your choice</h2>
+                
+                    <form action="{% url 'index' %}" method="get">
+                        <input type="text" name="airline" placeholder="enter airline name">
+                        <input type="submit" name="submit" value="search">
+                    </form>
+                
+            </div>
+    
+    </section>
+    <section class="search-info">            
+            <div class="container">
+                
+                {% if data %}
+                <div class="card-wrapper">
+                    <div class="airline-detail">
+                        <h2>airline</h2>
+                        
+                <p> Air Transport Association: {{ data.iata }}</p>
+                        
+                <p >Airline name: {{ data.name }}</p>                       
+                    
+                <p>Total Fleets: {{ data.fleet.total }}</p>
+                <img src="{{ data.logo_url }}" >
+
+                {% else %}
+                <h3>Your search will display here</h3>
+                    
+                
+
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+                        
+    </section>
+    
+</body>
+</html>
